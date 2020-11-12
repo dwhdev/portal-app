@@ -12,9 +12,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@pages/*": ["src/app/pages/*"],
+      "@core/*": ["src/app/core/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@models/*": ["src/app/models/*"],
+      "@interfaces/*": ["src/app/interfaces/*"],
+      "@services/*": ["src/app/services/*"],
+      "@interceptors/*": ["src/app/interceptors/*"],
+      "@environments/*": ["src/environments/*"]
+    }
   }
 }
