@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+import { AppState } from '@app/app.reducer';
+
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.css']
+    selector: 'app-pages',
+    templateUrl: './pages.component.html',
+    styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+    public openedSidenav: boolean;
+    public railSidenav = false;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        private store: Store<AppState>
+    ) { }
+
+    ngOnInit(): void {
+        this.store.select('sidenav').subscribe(({ sidebarState }) => {
+            this.openedSidenav = sidebarState === 'open';
+        });
+
+    }
 
 }

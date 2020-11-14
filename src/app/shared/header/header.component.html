@@ -1,5 +1,16 @@
 <header>
-    <mat-toolbar color="primary">
-        <span>Portal Data Warehouse</span>
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div>
+            <button mat-icon-button (click)="toogle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Portal Data Warehouse</span>
+        </div>
+
+        <div style="height: 100%;" fxLayout="column" fxLayoutAlign="center">
+            <img height="75%" src="assets/img/logo.png">
+        </div>
+
     </mat-toolbar>
 </header>

@@ -1,14 +1,19 @@
-<main class="pages-container">
+<main class="main-container">
 
     <app-header></app-header>
 
-    <mat-sidenav-container class="main-container">
+    <mat-sidenav-container class="app-container" autosize>
 
-        <app-sidenav></app-sidenav>
+        <mat-sidenav #sidenav [mode]="'side'" [opened]="railSidenav?true:openedSidenav">
+            <app-sidenav></app-sidenav>
+        </mat-sidenav>
 
-        <section fxFlexFill>
-            <router-outlet></router-outlet>
-        </section>
+        <mat-sidenav-content>
+            <section class="page-container">
+                Aquí va el contenido de la aplicación.
+                <!-- <router-outlet></router-outlet> -->
+            </section>
+        </mat-sidenav-content>
 
     </mat-sidenav-container>
 

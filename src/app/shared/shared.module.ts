@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { FooterComponent } from './footer/footer.component';
@@ -22,7 +24,9 @@ import { HeaderComponent } from './header/header.component';
     imports: [
         CommonModule,
         FlexLayoutModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule
     ]
 })
 export class SharedModule { }
