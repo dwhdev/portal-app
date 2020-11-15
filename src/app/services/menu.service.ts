@@ -159,9 +159,10 @@ export class MenuService {
         icon: 'developer_board',
         submenus: [
             {
-                name: 'Bitácora de Ejecución',
+                name: 'Ejecuciones',
                 path: 'executions',
                 items: [
+                    { name: 'Bitácora de Ejecución', path: 'logs' },
                     { name: 'Ejecuciones Manuales', path: 'manuals' },
                     { name: 'Ejecuciones en Cola', path: 'queued' },
                     { name: 'Ejecuciones Pendientes', path: 'pendings' },
@@ -170,9 +171,10 @@ export class MenuService {
                     { name: 'Monitoreo de Ejecuciones', path: 'monitoring' },
                 ]
             }, {
-                name: 'Grafo de Elementos',
+                name: 'Elementos',
                 path: 'elements',
                 items: [
+                    { name: 'Grafo', icon: 'device_hub', path: 'graph' },
                     { name: 'Programas', icon: 'settings', path: 'program' },
                     { name: 'Tablas', icon: 'wysiwyg', path: 'table' },
                     { name: 'Vistas', icon: 'table_view', path: 'view' },

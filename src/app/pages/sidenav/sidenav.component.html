@@ -18,10 +18,10 @@
         <mat-expansion-panel *ngIf="menu.submenus" [expanded]="menu.expanded || false">
             <ng-container *ngFor="let submenu of menu.submenus">
                 <a *ngIf="!submenu.items" mat-list-item (click)="subMenuNavigate(menu, submenu)">
-                    <span>{{submenu.name}}</span>
+                    <span class="ml-2">{{submenu.name}}</span>
                 </a>
                 <a *ngIf="submenu.items" mat-list-item (click)="submenu.expanded = !submenu.expanded">
-                    <span matLine>{{submenu.name}}</span>
+                    <span class="ml-2" matLine>{{submenu.name}}</span>
                     <mat-icon class="menu-button" [class.rotated]="submenu.expanded || false">
                         keyboard_arrow_down
                     </mat-icon>
