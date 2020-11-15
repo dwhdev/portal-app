@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -9,9 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
 
+import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
-import { SharedModule } from '../shared/shared.module';
+
+import { SharedModule } from '@shared/shared.module';
 import { SidenavModule } from './sidenav/sidenav.module';
+import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
 
 
 
@@ -24,7 +26,7 @@ import { SidenavModule } from './sidenav/sidenav.module';
     ],
     imports: [
         CommonModule,
-        RouterModule,
+        PagesRoutingModule,
         FlexLayoutModule,
         MatSidenavModule,
         MatListModule,
@@ -32,6 +34,7 @@ import { SidenavModule } from './sidenav/sidenav.module';
         MatDividerModule,
         SharedModule,
         SidenavModule,
+        BreadcrumbModule
     ]
 })
 export class PagesModule { }

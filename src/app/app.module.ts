@@ -23,8 +23,7 @@ import { PagesModule } from './pages/pages.module';
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: environment.production
-        }),
-        PagesModule
+        })
     ],
     providers: [],
     bootstrap: [AppComponent]
