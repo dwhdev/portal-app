@@ -34,7 +34,7 @@ export class BreadcrumbService {
      * @param breadcrumb el arreglo que contiene el breadcrumb de la aplicación.
      */
     public saveBreadcrumb(breadcrumb: string[]): void {
-        this._breadcrumb = breadcrumb;
+        this._breadcrumb = [...breadcrumb];
         sessionStorage.setItem('breadcrumb', JSON.stringify(breadcrumb));
     }
 

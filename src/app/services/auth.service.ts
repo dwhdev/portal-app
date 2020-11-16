@@ -58,6 +58,7 @@ export class AuthService {
      */
     public clearStorage(): void {
         this.breadService.clearBreadcrumb();
+        sessionStorage.removeItem('expiresIn');
     }
 
     /**
@@ -76,8 +77,14 @@ export class AuthService {
             );
     }
 
-    public logout(): void {
-        this.clearStorage();
+    /**
+     * Cierra la sesión de la aplicación.
+     */
+    public logout(): Observable<void> {
+        return this.http.post('/auth/logout', {})
+            .pipe(
+                map(res => this.clearStorage())
+            );
     }
 
     /**

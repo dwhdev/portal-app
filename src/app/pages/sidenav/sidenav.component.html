@@ -1,6 +1,6 @@
 <mat-nav-list>
 
-    <a mat-list-item [routerLink]="['']">
+    <a mat-list-item (click)="navService.homeNavigate()">
         <mat-icon mat-list-icon>home</mat-icon>
         <span *ngIf="!rail && expanded" matLine>Inicio</span>
     </a>
@@ -44,5 +44,16 @@
         <mat-divider *ngIf="menu.expanded && i < menuService.menuList.length - 1" class="mt-2"></mat-divider>
 
     </ng-container>
+
+    <mat-divider class="mt-2"></mat-divider>
+
+
+    <a class="mt-2" mat-list-item (click)="logout()">
+        <mat-icon mat-list-icon color="warn">power_settings_new</mat-icon>
+        <span color="warn" *ngIf="!rail && expanded" matLine>Salir</span>
+    </a>
+
+
+
 
 </mat-nav-list>

@@ -1,9 +1,11 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivationEnd, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
-import { BreadcrumbService } from '../../services/breadcrumb.service';
+import { filter, map } from 'rxjs/operators';
+
+
+import { BreadcrumbService } from '@services/breadcrumb.service';
+import { NavigationService } from '@services/navigation.service';
 
 @Component({
     selector: 'app-breadcrumb',
@@ -14,23 +16,20 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
 
     private routerSubs: Subscription = new Subscription();
 
-    public breadcrumb: string[] = [];
-
     constructor(
         private router: Router,
-        private breadService: BreadcrumbService
-    ) {
-        this.breadcrumb = breadService.breadcrumb;
-    }
+        public breadService: BreadcrumbService,
+        public navService: NavigationService
+    ) { }
 
     ngOnInit(): void {
         this.routerSubs = this.router.events
             .pipe(
                 filter(e => e instanceof NavigationEnd),
                 map(() => this.router.getCurrentNavigation().extras.state),
-            ).subscribe(
-                e => this.breadService.saveBreadcrumb(e.breadcrumb)
-            );
+            ).subscribe(e => {
+                this.breadService.saveBreadcrumb(e.breadcrumb);
+            });
     }
 
     ngOnDestroy(): void {

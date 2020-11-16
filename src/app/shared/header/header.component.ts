@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    public toogle = () => {
+    public toogle(): void {
         this.store.dispatch(toogleAction());
-    };
+    }
 
 }

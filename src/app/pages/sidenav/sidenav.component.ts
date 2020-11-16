@@ -7,6 +7,7 @@ import { AppState } from '@app/app.reducer';
 
 import { MenuService } from '@services/menu.service';
 import { NavigationService } from '@services/navigation.service';
+import { AuthService } from '@services/auth.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     constructor(
         private store: Store<AppState>,
+        private authService: AuthService,
         public navService: NavigationService,
         public menuService: MenuService
     ) { }
@@ -34,6 +36,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.sidebarStateSubs.unsubscribe();
+    }
+
+    public logout(): void {
+        this.authService.logout().subscribe(() => this.navService.loginNavigate());
     }
 
 }

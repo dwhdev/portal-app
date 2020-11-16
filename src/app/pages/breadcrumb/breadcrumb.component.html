@@ -1,9 +1,9 @@
 <mat-card class="breadcrumb" fxLayout="row" fxLayoutAlign="start center">
-    <a mat-icon-button [routerLink]="['']">
+    <a mat-icon-button (click)="navService.homeNavigate()">
         <mat-icon>home</mat-icon>
     </a>
 
-    <ng-container *ngFor="let crumb of breadcrumb">
+    <ng-container *ngFor="let crumb of breadService.breadcrumb">
         <mat-icon>keyboard_arrow_right</mat-icon>
         <span>{{crumb}}</span>
     </ng-container>
