@@ -16,7 +16,6 @@ import { SidenavModule } from './sidenav/sidenav.module';
 import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
 
 
-
 @NgModule({
     declarations: [
         PagesComponent

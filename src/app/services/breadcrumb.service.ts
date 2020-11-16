@@ -30,6 +30,13 @@ export class BreadcrumbService {
     }
 
     /**
+     * Establece el breadcrumb de la página de inicio después de iniciar sesión.
+     */
+    public homeBreadcrumbAfterLogin(): void {
+        this.saveBreadcrumb(['Inicio']);
+    }
+
+    /**
      * Almacena el breadcrumb en el sessionStorage.
      * @param breadcrumb el arreglo que contiene el breadcrumb de la aplicación.
      */

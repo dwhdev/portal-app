@@ -4,16 +4,21 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 
+// Módulos
+import { PipesModule } from '@pipes/pipes.module';
 
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [
+        HomeComponent
+    ],
     exports: [
         HomeComponent
     ],
     imports: [
         CommonModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        PipesModule
     ]
 })
 export class HomeModule { }

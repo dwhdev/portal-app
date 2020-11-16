@@ -15,4 +15,5 @@
 
 .page-container {
   padding: 8px;
+  overflow: scroll;
 }

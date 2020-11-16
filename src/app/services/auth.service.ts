@@ -71,6 +71,7 @@ export class AuthService {
                 map((res: IAPILoginResponse) => {
                     this.saveTokenExpires(res.expiresIn);
                     this.saveRemember(loginForm);
+                    this.breadService.homeBreadcrumbAfterLogin();
                     return res;
                 }),
                 shareReplay(1)
