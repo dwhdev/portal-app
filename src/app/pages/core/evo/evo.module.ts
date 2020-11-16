@@ -9,8 +9,7 @@ import { ExecutionsModule } from './executions/executions.module';
     declarations: [],
     imports: [
         CommonModule,
-        EvoRoutingModule,
-        ExecutionsModule
+        EvoRoutingModule
     ]
 })
 export class EvoModule { }

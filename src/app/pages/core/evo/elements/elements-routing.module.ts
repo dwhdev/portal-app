@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+
 import { ProgramsComponent } from './programs/programs.component';
 import { TablesComponent } from './tables/tables.component';
+import { GraphComponent } from './graph/graph.component';
 
 const routes: Routes = [{
-    path: '', children: [
-        { path: 'program', component: ProgramsComponent, data: ['DWHEVO', 'Grafo de Elementos', 'Programas'] },
-        { path: 'table', component: TablesComponent, data: ['DWHEVO', 'Grafo de Elementos', 'Programas'] },
-    ]
+    path: '',
+    children: [{
+        path: 'graph',
+        component: GraphComponent
+    }, {
+        path: 'program',
+        component: ProgramsComponent
+    }, {
+        path: 'table',
+        component: TablesComponent
+    }]
 }];
 
 @NgModule({

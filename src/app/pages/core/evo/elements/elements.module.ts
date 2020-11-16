@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ProgramsComponent } from './programs/programs.component';
 import { TablesComponent } from './tables/tables.component';
 import { ElementsRoutingModule } from './elements-routing.module';
+import { GraphComponent } from './graph/graph.component';
 
 
 
 @NgModule({
     declarations: [
+        GraphComponent,
         ProgramsComponent,
-        TablesComponent
+        TablesComponent,
     ],
     exports: [
+        GraphComponent,
         ProgramsComponent,
-        TablesComponent
+        TablesComponent,
     ],
     imports: [
         CommonModule,

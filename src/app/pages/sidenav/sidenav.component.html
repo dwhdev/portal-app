@@ -7,7 +7,7 @@
 
     <mat-divider></mat-divider>
 
-    <ng-container *ngFor="let menu of menuService.menuList">
+    <ng-container *ngFor="let menu of menuService.menuList; let i = index">
         <a mat-list-item (click)="menu.expanded = !menu.expanded">
             <mat-icon *ngIf="menu.icon" mat-list-icon>{{menu.icon}}</mat-icon>
             <span matLine>{{menu.name}}</span>
@@ -17,7 +17,7 @@
         </a>
         <mat-expansion-panel *ngIf="menu.submenus" [expanded]="menu.expanded || false">
             <ng-container *ngFor="let submenu of menu.submenus">
-                <a *ngIf="!submenu.items" mat-list-item (click)="subMenuNavigate(menu, submenu)">
+                <a *ngIf="!submenu.items" mat-list-item (click)="navService.subMenuNavigate(menu, submenu)">
                     <span class="ml-2">{{submenu.name}}</span>
                 </a>
                 <a *ngIf="submenu.items" mat-list-item (click)="submenu.expanded = !submenu.expanded">
@@ -30,7 +30,7 @@
                     [expanded]="submenu.expanded || false">
                     <section fxLayout="column" fxLayoutAlign="none stretch">
                         <ng-container *ngFor="let item of submenu.items">
-                            <a mat-list-item (click)="itemNavigate(menu, submenu, item)">
+                            <a mat-list-item (click)="navService.itemNavigate(menu, submenu, item)">
                                 <mat-icon *ngIf="item.icon" class="ml-4 mr-2">{{item.icon}}</mat-icon>
                                 <span [class.ml-4]="!item.icon">
                                     {{item.name}}
@@ -41,7 +41,8 @@
                 </mat-expansion-panel>
             </ng-container>
         </mat-expansion-panel>
-    </ng-container>
+        <mat-divider *ngIf="menu.expanded && i < menuService.menuList.length - 1" class="mt-2"></mat-divider>
 
+    </ng-container>
 
 </mat-nav-list>

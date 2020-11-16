@@ -184,7 +184,7 @@ export class MenuService {
                 ]
             }, {
                 name: 'Configuración EVO',
-                path: 'configuration',
+                path: 'configurations',
                 items: [
                     { name: 'Parámetros Calendarizador', path: 'parameters' },
                     { name: 'Colas de Ejecución', path: 'queues' },

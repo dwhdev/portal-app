@@ -1,5 +1,47 @@
 <main class="main-container">
     <app-header></app-header>
-    login
+
+    <section class="login-container" fxLayout="column" fxLayoutAlign="non center">
+
+        <mat-card>
+            <mat-card-title class="mb-2">Inicio de Sesión</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="loginForm">
+
+                    <mat-form-field>
+                        <mat-label>Usuario</mat-label>
+                        <input #inputUser matInput required autocomplete="off" placeholder="Ingrese su usuario"
+                            formControlName="username">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Contraseña</mat-label>
+                        <input #inputPass matInput [type]="hide?'password':'text'" required autocomplete="off"
+                            placeholder="Ingrese su contraseña" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon color="primary">
+                                {{hide ? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <div class="mb-2" fxLayout="row" fxLayoutAlign="end">
+                        <mat-checkbox color="primary" formControlName="remember">Recordar</mat-checkbox>
+                    </div>
+
+                    <div fxLayout="column">
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">
+                            <mat-icon>login</mat-icon>
+                            Ingresar
+                        </button>
+                    </div>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </section>
+
     <app-footer></app-footer>
 </main>

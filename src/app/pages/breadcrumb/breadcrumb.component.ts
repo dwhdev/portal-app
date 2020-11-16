@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivationEnd, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { BreadcrumbService } from '../../services/breadcrumb.service';
 
 @Component({
     selector: 'app-breadcrumb',
@@ -15,8 +16,11 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
 
     public breadcrumb: string[] = [];
 
-    constructor(private router: Router) {
-        this.loadBreadcrumb();
+    constructor(
+        private router: Router,
+        private breadService: BreadcrumbService
+    ) {
+        this.breadcrumb = breadService.breadcrumb;
     }
 
     ngOnInit(): void {
@@ -25,23 +29,11 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
                 filter(e => e instanceof NavigationEnd),
                 map(() => this.router.getCurrentNavigation().extras.state),
             ).subscribe(
-                e => this.saveBreadcrumb(e.breadcrumb)
+                e => this.breadService.saveBreadcrumb(e.breadcrumb)
             );
     }
 
     ngOnDestroy(): void {
         this.routerSubs.unsubscribe();
     }
-
-    private loadBreadcrumb(): void {
-        if (sessionStorage.getItem('breadcrumb')) {
-            this.breadcrumb = JSON.parse(sessionStorage.getItem('breadcrumb'));
-        }
-    }
-
-    private saveBreadcrumb(breadcrumb: string[]): void {
-        this.breadcrumb = breadcrumb;
-        sessionStorage.setItem('breadcrumb', JSON.stringify(breadcrumb));
-    }
-
 }
