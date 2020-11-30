@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+
 // Módulos
 import { AuthRoutingModule } from './auth-routing.module';
 import { SharedModule } from '@shared/shared.module';

@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+
+
 // NgRx
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
@@ -29,6 +32,14 @@ import { AppComponent } from '@app/app.component';
         StoreDevtoolsModule.instrument({
             maxAge: 10,
             logOnly: environment.production
+        }),
+        ToastrModule.forRoot({
+            timeOut: 2000,
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            positionClass: 'toast-bottom-right',
+            maxOpened: 6,
+            closeButton: true
         })
     ],
     providers: [httpInterceptorProviders],

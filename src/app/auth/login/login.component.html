@@ -17,9 +17,10 @@
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
                         <input #inputPass matInput [type]="hide?'password':'text'" required autocomplete="off"
-                            placeholder="Ingrese su contraseña" formControlName="password">
+                            placeholder="Ingrese su contraseña" formControlName="password"
+                            (keydown.enter)="(loginForm.valid && !loading)?login($event):false">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                            [attr.aria-pressed]="hide">
+                            [attr.aria-pressed]="hide" *ngIf="!loading">
                             <mat-icon color="primary">
                                 {{hide ? 'visibility_off' : 'visibility'}}
                             </mat-icon>
@@ -27,12 +28,14 @@
                     </mat-form-field>
 
                     <div class="mb-2" fxLayout="row" fxLayoutAlign="end">
-                        <mat-checkbox color="primary" formControlName="remember">Recordar</mat-checkbox>
+                        <mat-checkbox color="primary" formControlName="remember">Recordar
+                        </mat-checkbox>
                     </div>
 
                     <div fxLayout="column">
-                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">
-                            <mat-icon>login</mat-icon>
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid || loading"
+                            (click)="login()">
+                            <mat-icon [class.spinner]="loading">{{loading?'refresh':'login'}}</mat-icon>
                             Ingresar
                         </button>
                     </div>
