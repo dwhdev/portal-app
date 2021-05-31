@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '@app/app.reducer';
+import { closedAction, openedAction } from './sidenav/sidenav.actions';
 
 @Component({
     selector: 'app-pages',
@@ -22,6 +23,14 @@ export class PagesComponent implements OnInit {
             this.openedSidenav = sidebarState === 'open';
         });
 
+    }
+
+    onChangeNavbar(e: boolean): void {
+        if (e) {
+            this.store.dispatch(openedAction());
+        } else {
+            this.store.dispatch(closedAction());
+        }
     }
 
 }
